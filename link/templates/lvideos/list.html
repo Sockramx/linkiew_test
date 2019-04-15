@@ -12,7 +12,46 @@
     </ol>
 </nav>
 
-<div class="btn-group" role="group" aria-label="Basic example">
-    <a href="#" class="btn btn-primary">New</a>
+<div class="card">
+    <div class="card-body">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="{% url 'videos:create' %}" class="btn btn-primary">New</a>
+        </div>
+    </div>
 </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Link</th>
+            <th scope="col">Description</th>
+            <th scope="col">source</th>
+            <th scope="col">User</th>
+            <th scope="col">Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for video in obj %}
+        <tr>
+            <th scope="row">{{ video.id }}</th>
+            <td>{{ video.name }}</td>
+            <td>{{ video.link }}</td>
+            <td>{{ video.description }}</td>
+            <td>{{ video.source }}</td>
+            <td>{{ video.user }}</td>
+            <td>{{ video.category }}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-primary" target="_blank" href="{{ video.link }}">ir</a>
+                    <a class="btn btn-warning" href="{% url 'videos:edit' %}">Edit</a>
+                    <a class="btn btn-info" href="#">Info</a>
+                    <a class="btn btn-danger" href="{% url 'videos:delete' %}">Delete</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
