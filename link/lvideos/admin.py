@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Lvideos
+from .models import Video, Category
 
 
 
-admin.site.register(Lvideos)
+admin.site.register(Video)
+admin.site.register(Category)
