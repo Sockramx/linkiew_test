@@ -6,6 +6,6 @@ urlpatterns = [
     path('home/', home, name='home'),
     path('list/', list, name='list'),
     path('create/', create, name='create'),
-    path('edit/', edit, name='edit'),
+    path('edit/<int:video_id>', edit, name='edit'),
     path('delete/', delete, name='delete'),
 ]

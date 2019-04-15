@@ -13,11 +13,8 @@
 </nav>
 
 <form method="POST">
-        {% csrf_token %}
+    {% csrf_token %}
     {{ form.as_p }}
     <button class="btn btn-primary" type="submit">Save</button>
 </form>
-
-
-
 {% endblock %}

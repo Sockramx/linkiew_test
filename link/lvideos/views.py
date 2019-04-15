@@ -41,7 +41,7 @@ def create(request):
 
 
 @login_required(login_url='login')
-def edit(request):
+def edit(request, video_id):
     title = 'Edit'
 
     context = {
