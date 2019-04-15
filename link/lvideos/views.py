@@ -2,7 +2,10 @@ from django.shortcuts import render
 
 
 
-def videos(request):
+def home(request):
+    return render(request, 'home.html')
 
-    return render(request, 'layout.html')
-    
+def videos(request):
+    return render(request, 'lvideos/list.html')
+
+

@@ -22,7 +22,9 @@ from lvideos import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('', auth_views.LoginView.as_view(), name='login'),
-    path('videos/', views.videos, name='videos'),
+    path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    #app lvideos
+    path('videos/', include('lvideos.urls')),
 ]
