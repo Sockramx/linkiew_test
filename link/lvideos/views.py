@@ -9,16 +9,39 @@ def home(request):
 
 
 @login_required(login_url='login')
-def videos(request):
+def list(request):
+    title = 'List'
     
-    titulo = 'list'
-    form = VideoModelForm
-
     context = {
-        'titulo': titulo,
-        'form': form,
+        'title': title,
     }
-
     return render(request, 'lvideos/list.html', context)
 
 
+def create(request):
+    title = 'Create'
+    form = VideoModelForm
+
+    context = {
+        'title': title,
+        'form': form,
+    }
+    return render(request, 'lvideos/create.html', context)
+
+
+def edit(request):
+    title = 'Edit'
+
+    context = {
+        'title': title,
+    }
+    return render(request, 'lvideos/edit.html', context)
+
+
+def delete(request):
+    title = 'Delete'
+
+    context = {
+        'title': title,
+    }
+    return render(request, 'lvideos/delete.html', context)   

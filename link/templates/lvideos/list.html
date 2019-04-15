@@ -1,6 +1,18 @@
 {% extends 'layout.html' %}
+{% load static %}
 
 {% block main %}
-<h2>list</h2>
-{{form.as_p }}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{{ title }}</h1>
+</div>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Videos</a></li>
+        <li class="breadcrumb-item " aria-current="page">List</li>
+    </ol>
+</nav>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a href="#" class="btn btn-primary">New</a>
+</div>
 {% endblock %}
