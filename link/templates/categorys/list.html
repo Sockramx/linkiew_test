@@ -22,10 +22,10 @@
 
 {% if messages %}
     {% for message in messages %}
-        <div class="alert alert-success" role="alert">
-            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
-            {{ message }}
-        </div>
+    <div class="alert alert-success" role="alert">
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+    </div>
     {% endfor %}
 {% endif %}
 
