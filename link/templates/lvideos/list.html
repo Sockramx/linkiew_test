@@ -7,7 +7,7 @@
 </div>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Videos</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'videos:list' %}">Videos</a></li>
         <li class="breadcrumb-item " aria-current="page">List</li>
     </ol>
 </nav>
@@ -19,6 +19,15 @@
         </div>
     </div>
 </div>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 
 <table class="table">
     <thead>
@@ -46,8 +55,7 @@
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <a class="btn btn-primary" target="_blank" href="{{ video.link }}">ir</a>
                     <a class="btn btn-warning" href="{% url 'videos:edit' video.id  %}">Edit</a>
-                    <a class="btn btn-info" href="#">Info</a>
-                    <a class="btn btn-danger" href="{% url 'videos:delete' %}">Delete</a>
+                    <a class="btn btn-danger" href="{% url 'videos:delete' video.id %}">Delete</a>
                 </div>
             </td>
         </tr>

@@ -7,10 +7,19 @@
 </div>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Videos</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'videos:list' %}">Videos</a></li>
         <li class="breadcrumb-item " aria-current="page">Edit</li>
     </ol>
 </nav>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 
 <form method="POST">
     {% csrf_token %}
