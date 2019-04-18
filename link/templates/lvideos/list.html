@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block main %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{{ title }}</h1>
+</div>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'Categorys:list' %}">Videos</a></li>
+        <li class="breadcrumb-item " aria-current="page">List</li>
+    </ol>
+</nav>
+
+<div class="card">
+    <div class="card-body">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="{% url 'videos:create' %}" class="btn btn-primary">New</a>
+        </div>
+    </div>
+</div>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Link</th>
+            <th scope="col">Description</th>
+            <th scope="col">source</th>
+            <th scope="col">User</th>
+            <th scope="col">Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for video in obj %}
+        <tr>
+            <th scope="row">{{ video.id }}</th>
+            <td>{{ video.name }}</td>
+            <td>{{ video.link }}</td>
+            <td>{{ video.description }}</td>
+            <td>{{ video.source }}</td>
+            <td>{{ video.user }}</td>
+            <td>{{ video.category }}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-primary" target="_blank" href="{{ video.link }}">ir</a>
+                    <a class="btn btn-warning" href="{% url 'videos:edit' video.id  %}">Edit</a>
+                    <a class="btn btn-danger" href="{% url 'videos:delete' video.id %}">Delete</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
