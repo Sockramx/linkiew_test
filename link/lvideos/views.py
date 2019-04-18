@@ -23,6 +23,8 @@ def list(request):
 
 @login_required(login_url='login')
 def create(request):
+    title = 'Create'
+
     if request.method == 'POST':
         form = VideoModelForm(request.POST)
         if form.is_valid():
@@ -31,8 +33,6 @@ def create(request):
     else:
         form = VideoModelForm()
 
-    title = 'Create'
-    
     context = {
         'title': title,
         'form': form,
@@ -42,12 +42,20 @@ def create(request):
 
 @login_required(login_url='login')
 def edit(request, video_id):
-    print('zzzz')
-    print(video_id)
     title = 'Edit'
+    instance = Video.objects.get(id=video_id)
+    form = VideoModelForm(request.POST or None, instance=instance)
+
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        print('mensaje guardado')
+        return redirect('videos:list')
 
     context = {
         'title': title,
+        #'instance': instance,
+        'form': form,
     }
     return render(request, 'lvideos/edit.html', context)
 

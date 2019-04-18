@@ -25,7 +25,6 @@ class VideoModelForm(forms.ModelForm):
         self.fields['user'].widget.attrs.update({'class': 'form-control'})
         self.fields['category'].widget.attrs.update({'class': 'form-control'})
         
-
     class Meta:
         model = Video
         fields = ['name', 'link', 'description', 'source', 'user', 'category']
