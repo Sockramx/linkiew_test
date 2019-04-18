@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 from django.urls import path, include
-from lvideos import views
 
 
 urlpatterns = [
@@ -26,5 +25,6 @@ urlpatterns = [
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('accounts/', include('django.contrib.auth.urls')),
     #app lvideos
-    path('videos/', include('lvideos.urls')),
+    path('videos/', include('lvideos.urls', namespace='videos')),
+    path('categories/', include('categorys.urls', namespace='Categorys')),
 ]

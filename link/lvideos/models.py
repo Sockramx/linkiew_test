@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-from categorys.models import Category
 
 
 class Video(models.Model):
