@@ -18,7 +18,7 @@ def list(request):
 
     context = {
         'title': title,
-         'obj': obj,
+        'obj': obj,
     }
     return render(request, 'lvideos/list.html', context)
 
